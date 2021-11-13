@@ -65,17 +65,19 @@ const Posts = () => {
     body = [];
     posts.map((post, i) => {
       body.push(
-        <Post key={i} 
-              id={post.id} 
-              title={post.postname}
-              username={post.username || "NA"} 
-              content={post.contents} 
-              createdAt={post.createdAt || "Past"}
-              likes={post.liked || 0}
-              isLiked={post.isLiked}
-              isSaved={post.isSaved}
-              postImage={post.image || null}
-        />
+        <div key={i} id={post.id} >
+          <Post htmlId={post.id}
+                id={post.id} 
+                title={post.postname}
+                username={post.username || "NA"} 
+                content={post.contents} 
+                createdAt={post.createdAt || "Past"}
+                likes={post.liked || 0}
+                isLiked={post.isLiked}
+                isSaved={post.isSaved}
+                postImage={post.image || null}
+          />
+        </div>
       )
     })
   }

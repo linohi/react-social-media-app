@@ -53,15 +53,12 @@ const AddPost = () => {
       if(res.status === 200) {
         await handleUploadImage()
           .then(async(res) => {
-            if(res.data.status === 200 || res.data.status === 204) {
-              console.log(res)
-              console.log(res.data)
-              console.log(res.data.imageName)
+            if(res.status === 200 || res.status === 204) {
               await createPost({
                 postname,
                 contents,
                 username: getUser(),
-                image: res.data.data.imageName
+                image: res.imageName
               }).then(async (res) => {
                 if(res.status === 200) {
                   setIsLoading(false);
@@ -71,12 +68,14 @@ const AddPost = () => {
                   handleError(res.message)
                 }
               }).catch((err) => {
+      console.log(err)
                 handleError("Oops! Error Occurred")
               })
             } else {
               handleError(res.message)
             }
           }).catch((err) => {
+      console.log(err)
             handleError("Oops! Error Occurred")
           })
       } else {
@@ -84,6 +83,7 @@ const AddPost = () => {
         navigate("/login?session-expired&bounce-to=/add-post")
       }
     }).catch((err) => {
+      console.log(err)
       handleError("Oops! Error Occurred")
     })
     return false

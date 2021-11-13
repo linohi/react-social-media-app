@@ -5,6 +5,20 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 
+// import firebase from "firebase";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+// firebase.initializeApp({
+//   apiKey: "AIzaSyB6TAKlOSd6eIEFbUVG9bvcH0rZknkx4xA",
+//   authDomain: "coastagram-app.firebaseapp.com",
+//   projectId: "coastagram-app",
+//   storageBucket: "coastagram-app.appspot.com",
+//   messagingSenderId: "371095148906",
+//   appId: "1:371095148906:web:da22c00c2ea850e229ad13"
+// });
+
 document.addEventListener('contextmenu', (e) => {
   e.preventDefault();
 })

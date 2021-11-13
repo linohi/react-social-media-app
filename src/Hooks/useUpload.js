@@ -1,6 +1,6 @@
 import { useState } from "react";
-import axios from "axios";
-// import { useToast } from "@chakra-ui/react";
+import { getStorage, ref, uploadBytes } from "firebase/storage";
+import { generateRandomKey } from "../Utils/RandomIdGenerator";
 
 const useUpload = () => {
   const [image, setImage] = useState(null);
@@ -26,29 +26,46 @@ const useUpload = () => {
     setImage(croppedImage)
   }
 
+  const isValidFileFormat = (format) => {
+    let validFormats = ['png', 'jpg', 'jpeg'];
+    return validFormats.includes(format)
+  }
+
   const handleUploadImage = async () => {
     try {
-        if(!image) {
-            return {
-                data: {
-                    status: 204,
-                    data: {
-                        imageName: null
-                    }
-                }
-            }
+      if(!image) {
+        return {
+          status: 204,
+          imageName: null
         }
+      }
       setLoading(true);
       const formData = new FormData();
       formData.append("file", image);
       formData.append("type", uploadType);
-      const res = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/upload`, formData);
-      if (res.data.data) {
-        setUploadedImage(res.data.data);
+      let fileParts = String(image.name).split(".");
+      const fileFormat = fileParts[fileParts.length - 1];
+      if(!isValidFileFormat(fileFormat)) {
+        return {
+          status: 400,
+          message: "Inavlid file format!"
+        }
       }
-      return res;
+      const fileRandomName = `${generateRandomKey()}.${fileFormat}`;
+      const storage = getStorage();
+      const storageRef = ref(storage, `/images/post/${fileRandomName}`);
+      return await uploadBytes(storageRef, image).then(async (snapshot) => {
+        return {
+          status: 200,
+          imageName: fileRandomName
+        };
+      }).catch((err) => {
+        return {
+          status: 500,
+          message: "File upload error!"
+        };
+      })
     } catch (error) {
-      console.log(error);
       throw new Error(error)
     } finally {
       setImage(null);

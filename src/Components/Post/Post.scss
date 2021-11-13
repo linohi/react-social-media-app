@@ -17,7 +17,7 @@
 .PostHeader {
     display: flex;
     align-items: center;
-    gap: 20px;
+    justify-content: space-between;
 
     .PostDetails {
         display: flex;
@@ -113,4 +113,61 @@ px
   
   .tooltip:hover .tooltiptext {
     visibility: visible;
+  }
+
+  .PostUserDetails {
+    display: flex;
+    align-items: center;
+    grid-gap: 20px;
+    gap: 20px;
+  }
+
+  .MenuButtonContainer {
+    display: flex;
+    align-items: center;
+    padding: 0 20px 0 0;
+    position: relative;
+  }
+
+  .DropdownMenu {
+    display: none;
+    position: absolute;
+    padding: 10px 0;
+    display: none;
+    position: absolute;
+    top: 30px;
+    width: 110px;
+    right: 0;
+    border: 1px solid #bdbdbd;
+    border-radius: 10px;
+    background-color: #fff;
+
+    .Menu {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 0 10px;
+        padding: 5px 10px;
+        cursor: pointer;
+        
+        &:hover {
+            background: #ededed;
+        }
+        
+        span {
+            font-size: small;
+        }
+    }
+  }
+
+  .MenuButton {
+      background: none;
+      border: none;
+      position: relative;
+  }
+
+  .MenuButton:hover {
+      .DropdownMenu {
+        display: block;
+      }
   }
