@@ -1,0 +1,22 @@
+.NotFound {
+    display: flex;
+    place-items: center;
+    height: calc(100vh - 57px);
+}
+
+.Container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 70px;
+    width: 100%;
+
+    img {
+        width: 30%;
+    }
+
+    span {
+        color: #626262;
+    }
+}

@@ -1,0 +1,116 @@
+.Post {
+    height: fit-content;
+    width: 100%;
+    padding: 20px 10px;
+    // border: 1px solid black;
+    // box-shadow: 0px 2px 2px 2px #ccc;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-top: 0 !important;
+    
+    @media screen and (max-width: 700px) {
+        padding: 20px;
+        width: calc(100% - 40px);
+    }
+}
+
+.PostHeader {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    .PostDetails {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 2px;
+    }
+
+    .PostDetails .Username {
+        font-size: 20px;
+        font-weight: 500;
+    }
+
+    .PostDetails .PostDate {
+        font-size: 12px;
+        font-weight: 500;
+    }
+}
+
+.PostBody p {
+    line-height: 20px;
+}
+
+.PostFooter {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.ProfileImage {
+    width: 50px;
+    height: 50px;
+    /* border: 1
+px
+ solid; */
+    border-radius: 50%;
+    z-index: 1;
+    overflow: hidden;
+    box-shadow: 0px 3px 11px 0px #ccc;
+
+    img {
+        width: 50px;
+        height: 55px;
+    }
+}
+
+.PostDetails {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    span {
+        font-size: small;
+    }
+}
+
+.PostImage {
+    height: 300px;
+    width: 300px;
+}
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+  }
+  
+  .tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 150%;
+    left: 50%;
+    margin-left: -60px;
+  }
+  
+  .tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: black transparent transparent transparent;
+  }
+  
+  .tooltip:hover .tooltiptext {
+    visibility: visible;
+  }

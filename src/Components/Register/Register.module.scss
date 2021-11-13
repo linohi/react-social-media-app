@@ -1,0 +1,53 @@
+.Register {
+    height: calc(100vh - 57px);
+}
+
+.Form {
+    gap: 20px;
+}
+
+.Form, .Register {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.TextInput, .Input {
+    width: 300px;
+    height: 30px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+}
+
+.TextInput {
+    width: 280px !important;
+    padding: 0 10px;
+}
+
+input[type=submit] {
+    background: #ad65f9;
+    color: white;
+    cursor: pointer;
+    border: 0px solid #000;
+
+    &:hover {
+        border: 2px solid #000;
+    }
+}
+
+.Link {
+    text-decoration: none;
+    color: blue;
+    font-size: small;
+}
+
+.error {
+    color: red;
+    font-size: small;
+}
+
+.Message {
+    font-size: small;
+}

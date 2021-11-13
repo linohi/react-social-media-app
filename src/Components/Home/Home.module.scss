@@ -1,0 +1,42 @@
+.Home {}
+
+.row {
+    width: 100%;
+    height: calc(100vh - 57px);
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+
+    @media screen and (max-width: 700px) {
+        height: calc(100vh - 115px);
+    }
+}
+
+.col-sidebar {
+    height: 100%;
+    width: 55px;
+}
+
+.col {
+    height: 100%;
+    width: 700px;
+}
+
+.Post_192 {
+    width: 710px;
+
+    @media screen and (min-width: 701px) and (max-width: 850px) {
+        width: 610px;
+    }
+
+    @media screen and (max-width: 700px) {
+        width: 100%;
+    }
+}
+
+.Message {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}

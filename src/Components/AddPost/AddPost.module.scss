@@ -1,0 +1,118 @@
+.AddPost {
+    height: calc(100vh - 57px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Form {
+    gap: 20px;
+}
+
+.Form, .Login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.TextInput, .Input {
+    width: 300px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    font-family: sans-serif;
+}
+
+input[type=text], input[type=submit] {
+    height: 30px;
+}
+
+textarea  {
+    padding-top: 5px !important;
+}
+
+.TextInput {
+    width: 280px !important;
+    padding: 0 10px;
+}
+
+input[type=submit] {
+    background: #ad65f9;
+    color: white;
+    cursor: pointer;
+    border: 0px solid #000;
+
+    &:hover {
+        border: 2px solid #000;
+    }
+}
+
+.Link {
+    text-decoration: none;
+    color: blue;
+    font-size: small;
+}
+
+.error {
+    color: red;
+    font-size: small;
+}
+
+.success {
+    color: green;
+    font-size: small;
+}
+
+.Message {
+    font-size: small;
+}
+
+
+.FileInput {
+    display: none
+}
+
+.LabelContainer, .LabelUploadButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+    span {
+        font-size: smaller;
+    }
+
+    .FileName {
+        text-overflow: ellipsis;
+        max-width: 195px;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+}
+
+.LabelUploadButton {
+    min-width: 100px;
+    cursor: pointer;
+}
+
+.cropper {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    .reactEasyCrop_Container {
+        background-color: white;
+    }
+}
+
+.CropContainerIcon {
+    color: black;
+    cursor: pointer;
+    z-index: 10000;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}

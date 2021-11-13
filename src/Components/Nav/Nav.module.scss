@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+.Nav {
+    height: 55px;
+    display: flex;
+    place-items: center;
+    padding: 0 20px;
+    border-bottom: 2px solid #ccc;
+    box-shadow: -20px 0px 6px 0px #ccc;
+    gap: 15px;
+    font-family: 'Bebas Neue', cursive;
+
+    span {
+        font-size: 23px;
+    }
+}
+
+.logo {
+    width: 40px;
+    height: 40px;
+}
