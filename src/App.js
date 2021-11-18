@@ -5,7 +5,6 @@ import { ToastContainer } from 'react-toastify';
 import './Firebase/Firebase';
 
 function App() {
-  console.log(process.env.REACT_APP_FIREBASE_PROJECT_ID)
   return (
     <div className="App">
       <Nav />

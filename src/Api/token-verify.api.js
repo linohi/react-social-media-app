@@ -5,7 +5,8 @@ async function verifyToken(rid) {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
-          'access_token': getToken()
+          'access_token': getToken(),
+          'X-Auth': 'true'
         },
         credentials: 'include',
         mode: 'cors'

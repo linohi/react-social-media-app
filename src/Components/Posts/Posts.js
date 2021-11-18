@@ -14,7 +14,7 @@ const Posts = () => {
 
 
   useEffect(() => {
-    const mainUrl = `${process.env.REACT_APP_WORKER_URL}/post`;
+    const mainUrl = `${process.env.REACT_APP_WORKER_URL}/posts`;
     const initFetchPosts = async () => {
       let url = mainUrl;
       setIsLoaded(false);

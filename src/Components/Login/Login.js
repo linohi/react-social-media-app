@@ -22,22 +22,25 @@ const Login = (props) => {
       username
     }).then(async (res) => {
       if(res.status === 200) {
-        await requestToken(res.rid)
+        await requestToken(res['username'])
           .then(async (resp) => {
             if(resp.status === 200) {
-              setAuth(resp.data['username'], resp.data['auth'])
+              setAuth(res['username'], resp.data)
               setIsLoading(false);
-              startNavigation();
+              // startNavigation();
             } else {
               handleError(resp.data)
             }
           }).catch((err) => {
+
+      console.log(err)
             handleError("Oops! Error Occurred")
           })
       } else {
         handleError(res.message)
       }
     }).catch((err) => {
+      console.log(err)
       handleError("Oops! Error Occurred")
     })
     return false
