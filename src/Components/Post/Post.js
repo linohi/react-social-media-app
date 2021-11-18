@@ -19,6 +19,7 @@ function Post({username, title, content, id, createdAt, likes, isLiked, isSaved,
   const [savedByUser, setSavedByUser] = useState(isSaved)
   const [postCreatedBy, setPostCreatedBy] = useState(username || '')
   const [image, setImage] = useState(postImage)
+  const [imageUrl, setImageUrl] = useState(null)
   let [noOfLikes, setNoOfLikes] = useState(likes)
   const navigate = useNavigate();
   const shareData = {
@@ -43,7 +44,8 @@ function Post({username, title, content, id, createdAt, likes, isLiked, isSaved,
     if(postImage) {
       getImageUrl('post', postImage)
         .then((url) => {
-          setImage(url)
+          // setImage(url)
+          setImageUrl(url)
         })
     }
     if(username) {
@@ -98,14 +100,14 @@ function Post({username, title, content, id, createdAt, likes, isLiked, isSaved,
               }
             }).catch((err) => {
               console.log(err)
-              toast("Oops! Error occured!")
+              toast.error("Oops! Error occured!")
             })
         } else {
           logout();
           navigate('/login?session-expired');
         }
       }).catch(() => {
-        toast("Cannot authenticate!")
+        toast.error("Cannot authenticate!")
       })
   }
 
@@ -121,6 +123,7 @@ function Post({username, title, content, id, createdAt, likes, isLiked, isSaved,
     } catch(err) {
       try {
         navigator.clipboard.writeText(link)
+        toast("Link Copied!")
       } catch(err) {
       }
     } 
@@ -158,7 +161,8 @@ function Post({username, title, content, id, createdAt, likes, isLiked, isSaved,
       </div>
       <div className="PostBody">
         <p>{content}</p>
-        {image && (<img src={image} alt={title} className='PostImage'/>)}
+        {imageUrl && (<img src={imageUrl} alt={title} className='PostImage'/>)}
+        {(image && !imageUrl) && (<p className='PostImageLoadingMessage'>--Loding Image--</p>)}
       </div>
       <hr/>
       <div className="PostFooter">

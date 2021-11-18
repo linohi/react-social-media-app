@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router';
 import register from '../../Api/register.api';
 import queryString from 'query-string';
+import { toast } from 'react-toastify';
 
 const Register = () => {
   const navigate = useNavigate();
@@ -22,6 +23,7 @@ const Register = () => {
     }).then(res => {
       if(res.status === 200) {
         navigate("/login?" + getLoginUrl());
+        toast.success("Registration successfull!")
       } else {
         handleError(res.message)
       }
@@ -35,6 +37,7 @@ const Register = () => {
     setIsLoading(false)
     setError(true)
     setErrorMessage(error)
+    toast.error(error)
   }
 
   const getLoginUrl = () => {

@@ -5,6 +5,7 @@ import queryString from 'query-string';
 import login from '../../Api/login.api';
 import requestToken from '../../Api/request-token.api';
 import { setAuth } from '../../SessionHandler/Session';
+import { toast } from 'react-toastify';
 
 const Login = (props) => {
   const navigate = useNavigate();
@@ -27,13 +28,11 @@ const Login = (props) => {
             if(resp.status === 200) {
               setAuth(res['username'], resp.data)
               setIsLoading(false);
-              // startNavigation();
+              startNavigation();
             } else {
               handleError(resp.data)
             }
           }).catch((err) => {
-
-      console.log(err)
             handleError("Oops! Error Occurred")
           })
       } else {
@@ -47,8 +46,10 @@ const Login = (props) => {
   }
 
   const handleError = (error) => {
+    setIsLoading(false)
     setError(true)
     setErrorMessage(error)
+    toast.error(error)
   }
 
   const startNavigation = () => {
@@ -76,7 +77,7 @@ const Login = (props) => {
         <input className={styles.TextInput} type="text" name="username" placeholder="Username" onChange={e => setUserName(e.target.value)}/>
         {/* <input className={styles.TextInput} type="password" name="password" placeholder="Password" onChange={e => setPassword(e.target.value)}/> */}
         <input className={styles.Input} type="submit" name="submit" value="Submit"/>
-        {(error || isSessionExpired()) && <div><span className={styles.error}>{errorMessage}</span></div>}
+        {((error || isSessionExpired()) && !isLoading) && <div><span className={styles.error}>{errorMessage}</span></div>}
         {isLoading && <div><span className={styles.Message}>Processing...</span></div>}
         <Link className={styles.Link} to={'/register?' + getRegisterUrl()}>New User? Register</Link>
         <Link className={styles.Link} to="/">&larr; Home</Link>

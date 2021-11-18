@@ -10,6 +10,7 @@ import useUpload from '../../Hooks/useUpload';
 import 'react-image-crop/dist/ReactCrop.css';
 import Cropper from 'react-easy-crop';
 import {  getCroppedImg } from '../../Utils/Cropper';
+import { toast } from 'react-toastify';
 
 const AddPost = () => {
   const navigate = useNavigate();
@@ -63,19 +64,19 @@ const AddPost = () => {
                 if(res.status === 200) {
                   setIsLoading(false);
                   setSuccess(true);
-                  setSuccessMessage("Post Added!");
+                  // setSuccessMessage("Post Added!");
+                  toast.success("Woohoo! Post Added!")
+                  navigate('/')
                 } else {
                   handleError(res.message)
                 }
               }).catch((err) => {
-      console.log(err)
                 handleError("Oops! Error Occurred")
               })
             } else {
               handleError(res.message)
             }
           }).catch((err) => {
-      console.log(err)
             handleError("Oops! Error Occurred")
           })
       } else {

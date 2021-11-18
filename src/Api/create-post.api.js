@@ -5,9 +5,19 @@ async function createPost(postData) {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(postData)
-    }).then(data => 
-      data.json()
-    ).catch((err) => {
+    }).then(async data => {
+      // data.json()
+      // await data.text()
+      let response = await data.text();
+      if(response === "success") {
+        return {
+          status: 200,
+        }
+      } else {
+        return {
+          status: 500,
+        }}
+    }).catch((err) => {
       throw new Error(err)
     })
 }
